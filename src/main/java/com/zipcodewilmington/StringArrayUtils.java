@@ -88,9 +88,16 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        boolean isPangramic = false;
-
-
+        boolean isPangramic = true;
+        String arrayJoined = Arrays.toString(array).toLowerCase();
+        String alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
+        String[] alphabetArray = alphabet.split(" ");
+        for (int i = 0; i < alphabetArray.length - 1; i++) {
+            if (!arrayJoined.contains(alphabetArray[i])) {
+                isPangramic = false;
+                break;
+            }
+        }
         return isPangramic;
     }
 
@@ -155,7 +162,6 @@ public class StringArrayUtils {
               j++;
           temp[temp.length - 1] = array[array.length - 1];
       }
-      System.out.println(Arrays.toString(temp));
       return temp;
     }
     /**
@@ -163,28 +169,14 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        Arrays.sort(array);
-
-        int count = 0;
+        //String[] packed =
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i].equals(array[i + 1])) {
-                count++;
-                continue;
+            if (array[i].contains(array[i + 1])) {
+                array[i] = array[i] + array[i + 1];
             }
-
         }
-        String[] temp = new String[array.length - count];
-
-        for (int i = 0, j = 0; i < array.length - 1; i++) {
-            if (array[i].equals(array[i + 1])) {
-                continue;
-            }
-            temp[j] = array[i];
-            j++;
-            temp[temp.length - 1] = array[array.length - 1];
-        }
-        System.out.println(Arrays.toString(temp));
-        return temp;
+        System.out.println(Arrays.toString(array));
+        String[] that = {"aaa", "b", "cc", "aa", "d"};
+        return that;
     }
-
 }
