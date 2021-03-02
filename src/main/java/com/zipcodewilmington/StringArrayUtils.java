@@ -1,5 +1,7 @@
 package com.zipcodewilmington;
 
+import java.util.Arrays;
+
 /**
  * Created by leon on 1/29/18.
  */
@@ -25,7 +27,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+
+        return array[array.length - 1];
     }
 
     /**
@@ -33,7 +36,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+        return array[array.length - 2];
     }
 
     /**
@@ -42,7 +45,13 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        boolean contains = false;
+        for (String element : array) {
+            if (element == value) {
+                contains = true;
+            }
+        }
+        return contains;
     }
 
     /**
@@ -50,7 +59,12 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+        for (int i = 0; i < array.length/2; i++) {
+            String temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
+        return array;
     }
 
     /**
@@ -58,7 +72,13 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+        boolean isPalindrome = false;
+        for (int i = array.length -1; i > 0; i--) {
+            if (array[i] == array[array.length - 1 - i]) {
+                isPalindrome = true;
+            }
+        }
+        return isPalindrome;
     }
 
     /**
@@ -66,7 +86,10 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        boolean isPangramic = false;
+
+
+        return isPangramic;
     }
 
     /**
@@ -75,7 +98,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int numberOfOccurences = 0;
+        for (String element : array) {
+            if (element == value) {
+                numberOfOccurences++;
+            }
+        }
+        return numberOfOccurences;
     }
 
     /**
@@ -84,6 +113,7 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+
         return null;
     }
 
