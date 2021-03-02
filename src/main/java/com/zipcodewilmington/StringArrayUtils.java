@@ -1,6 +1,8 @@
 package com.zipcodewilmington;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by leon on 1/29/18.
@@ -113,8 +115,21 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
+        int indexToRemove = 0;
+        String[] arraySansValue = new String[array.length - 1];
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] == valueToRemove) {
+                indexToRemove = i;
+            }
+        }
+        for (int i = 0, k = 0; i < array.length; i++) {
+            if (i == indexToRemove) {
+                continue;
+            }
+        arraySansValue[k++] = array[i];
+        }
 
-        return null;
+        return arraySansValue;
     }
 
     /**
@@ -122,16 +137,54 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
-    }
+      int count = 0;
+      for (int i = 0; i < array.length - 1; i++) {
+          if (array[i].equals(array[i + 1])) {
+              count++;
+              continue;
+          }
 
+      }
+      String[] temp = new String[array.length - count];
+
+      for (int i = 0, j = 0; i < array.length - 1; i++) {
+          if (array[i].equals(array[i + 1])) {
+              continue;
+          }
+              temp[j] = array[i];
+              j++;
+          temp[temp.length - 1] = array[array.length - 1];
+      }
+      System.out.println(Arrays.toString(temp));
+      return temp;
+    }
     /**
      * @param array array of chars
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
-    }
+        Arrays.sort(array);
 
+        int count = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i].equals(array[i + 1])) {
+                count++;
+                continue;
+            }
+
+        }
+        String[] temp = new String[array.length - count];
+
+        for (int i = 0, j = 0; i < array.length - 1; i++) {
+            if (array[i].equals(array[i + 1])) {
+                continue;
+            }
+            temp[j] = array[i];
+            j++;
+            temp[temp.length - 1] = array[array.length - 1];
+        }
+        System.out.println(Arrays.toString(temp));
+        return temp;
+    }
 
 }
