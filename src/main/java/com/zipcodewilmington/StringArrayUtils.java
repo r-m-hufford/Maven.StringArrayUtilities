@@ -174,12 +174,6 @@ public class StringArrayUtils {
         for (String element : array) {
             input.add(element);
         }
-        for (int i = 0; i < input.size() - 1; i++) {
-            if (input.get(i).contains(input.get(i+1))) {
-                input.set(i,input.get(i) + input.get(i + 1));
-                input.remove(i + 1);
-            }
-        }
 
         for (int j = 0; j < input.size() - 1; j++) {
             if (input.get(j) == input.get(j + 1)) {
@@ -188,9 +182,15 @@ public class StringArrayUtils {
             }
         }
 
+        for (int i = 0; i < input.size() - 1; i++) {
+            if (input.get(i).contains(input.get(i+1))) {
+                input.set(i,input.get(i) + input.get(i + 1));
+                input.remove(i + 1);
+            }
+        }
+
         String[] packDuplicates = input.toArray(new String[input.size()]);
 
-        System.out.println(Arrays.toString(packDuplicates));
         return packDuplicates;
     }
 }
